@@ -10,12 +10,12 @@ function BookList() {
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
+                setBooks(data)
             })
     }
 
     useEffect(() => {
         fetchBook()
-        setBooks(initialData())
     }, [])
 
     return (
@@ -29,7 +29,16 @@ function BookList() {
                 <div className="book-list">
                     <div className="grid gap-x-0.5 md:grid-cols-2">
                         {books.map((product) => {
-                            return <Product key={product.id} {...product} />
+                            return (
+                                <Product
+                                    key={product.id}
+                                    id={product.id}
+                                    title={product?.title}
+                                    discountRate={product?.discountRate}
+                                    price={product?.price}
+                                    coverImage={product?.coverImage}
+                                />
+                            )
                         })}
                     </div>
                 </div>
@@ -44,73 +53,10 @@ function initialData() {
     return [
         {
             id: 1,
-            name: '레이블라우스1',
+            title: '레이블라우스1',
             price: '57,600',
-            image: 'http://placekitten.com/200/300',
-            discunt: 15,
-        },
-        {
-            id: 2,
-            name: '레이블라우스2',
-            price: '600',
-            image: 'http://placekitten.com/200/300',
-            discunt: 10,
-        },
-        {
-            id: 3,
-            name: '레이블라우스3',
-            price: '600',
-            image: 'http://placekitten.com/200/300',
-            discunt: 15,
-        },
-        {
-            id: 4,
-            name: '레이블라우스4',
-            price: '650',
-            image: 'http://placekitten.com/200/300',
-            discunt: 15,
-        },
-        {
-            id: 5,
-            name: '레이블라우스5',
-            price: '850',
-            image: 'http://placekitten.com/200/300',
-            discunt: 15,
-        },
-        {
-            id: 6,
-            name: '레이블라우스6',
-            price: '950',
-            image: 'http://placekitten.com/200/300',
-            discunt: 15,
-        },
-        {
-            id: 7,
-            name: '레이블라우스7',
-            price: '950',
-            image: 'http://placekitten.com/200/300',
-            discunt: 15,
-        },
-        {
-            id: 8,
-            name: '레이블라우스8',
-            price: '950',
-            image: 'http://placekitten.com/200/300',
-            discunt: 15,
-        },
-        {
-            id: 9,
-            name: '레이블라우스9',
-            price: '950',
-            image: 'http://placekitten.com/200/300',
-            discunt: 15,
-        },
-        {
-            id: 10,
-            name: '레이블라우스10',
-            price: '950',
-            image: 'http://placekitten.com/200/300',
-            discunt: 15,
+            coverImage: 'http://placekitten.com/200/300',
+            discountRate: '15',
         },
     ]
 }
