@@ -1,5 +1,3 @@
-import productEmpty from '../assets/product-empty.png'
-
 type Product = {
     id: number
     name: string

@@ -11,8 +11,8 @@ module.exports = {
         'eslint:recommended',
         'plugin:prettier/recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:@next/next/recommended',
-        'next/core-web-vitals',
+        // 'plugin:@next/next/recommended',
+        // 'next/core-web-vitals',
         'prettier',
     ],
     rules: {

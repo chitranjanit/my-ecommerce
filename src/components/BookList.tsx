@@ -5,6 +5,19 @@ import Product from './Product'
 function BookList() {
     const [books, setBooks] = useState(() => initialData())
 
+    async function fetchBook() {
+        await fetch('http://localhost:3333/book/')
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+            })
+    }
+
+    useEffect(() => {
+        fetchBook()
+        setBooks(initialData())
+    }, [])
+
     return (
         <div>
             <div className="container max-w-[50%] mx-auto font-nato">
@@ -16,7 +29,7 @@ function BookList() {
                 <div className="book-list">
                     <div className="grid gap-x-0.5 md:grid-cols-2">
                         {books.map((product) => {
-                            return <Product {...product} />
+                            return <Product key={product.id} {...product} />
                         })}
                     </div>
                 </div>
